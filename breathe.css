@@ -1,0 +1,130 @@
+/* * Base Layout & Aesthetics
+ */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e0f7fa 0%, #e8f5e9 100%);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    overflow: hidden;
+}
+
+/* * The Main Interactive Element
+ * This acts as both the button and the breathing circle
+ */
+#breath-orb {
+    position: relative;
+    background: linear-gradient(135deg, #4dd0e1 0%, #26c6da 100%);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(38, 198, 218, 0.4);
+
+    /* Initial Button State Dimensions */
+    width: 200px;
+    height: 60px;
+    border-radius: 30px;
+
+    /* Flexbox for centering text */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* * Transitions
+     * We animate width, height, and border-radius for the shape morph.
+     * We animate transform for the breathing expansion.
+     */
+    transition:
+        width 1s cubic-bezier(0.25, 0.8, 0.25, 1),
+        height 1s cubic-bezier(0.25, 0.8, 0.25, 1),
+        border-radius 1s cubic-bezier(0.25, 0.8, 0.25, 1),
+        background-color 1s ease,
+        transform 0.1s linear; /* Placeholder duration, overridden by JS */
+
+    z-index: 10;
+}
+
+#breath-orb:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(38, 198, 218, 0.5);
+}
+
+#timer-text {
+    font-size: 0.9rem;
+    margin-top: 5px;
+    font-weight: 300;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* * Text Styling
+ */
+#status-text {
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+/* * State: Circle Mode
+ * Applied when the exercise starts
+ */
+#breath-orb.mode-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    cursor: default;
+    background: linear-gradient(135deg, #42a5f5 0%, #29b6f6 100%);
+    box-shadow: 0 0 40px rgba(66, 165, 245, 0.3);
+    /* Reset hover effect for the circle state */
+    transform: none !important;
+}
+
+/* * State: Proceed Mode
+ * Applied when exercise is done
+ */
+#breath-orb.mode-proceed {
+    width: 180px;
+    height: 60px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #66bb6a 0%, #43a047 100%);
+    box-shadow: 0 10px 25px rgba(76, 175, 80, 0.4);
+    cursor: pointer;
+}
+
+/* * Instructions / Subtext (Optional context)
+ */
+.instructions {
+    position: absolute;
+    bottom: 20%;
+    color: #546e7a;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 1s ease;
+    text-align: center;
+}
+.instructions.visible {
+    opacity: 1;
+}
+
+/* * Ripple/Guidance Rings (Visual decoration)
+ */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid rgba(66, 165, 245, 0.1);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 1;
+}

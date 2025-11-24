@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Mindful Breathing Blocker",
+  "version": "1.0",
+  "description": "Pause and breathe before visiting distracting websites",
+  "permissions": [
+    "webNavigation",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "https://youtube.com/*",
+    "https://slickdeals.net/*",
+    "https://www.slickdeals.net/*",
+    "https://news.ycombinator.com/*",
+    "https://www.facebook.com/*",
+    "https://facebook.com/*",
+    "https://www.instagram.com/*",
+    "https://instagram.com/*",
+    "https://www.wsj.com/*",
+    "https://wsj.com/*",
+    "https://www.nytimes.com/*",
+    "https://nytimes.com/*",
+    "https://www.linkedin.com/*",
+    "https://linkedin.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["breathe.html"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
