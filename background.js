@@ -5,8 +5,6 @@ const BLOCKED_SITES = [
   { pattern: /^https?:\/\/news\.ycombinator\.com\/?$/, name: 'hackernews' },
   { pattern: /^https?:\/\/(www\.)?facebook\.com\/?$/, name: 'facebook' },
   { pattern: /^https?:\/\/(www\.)?instagram\.com\/?$/, name: 'instagram' },
-  { pattern: /^https?:\/\/(www\.)?wsj\.com\/?$/, name: 'wsj' },
-  { pattern: /^https?:\/\/(www\.)?nytimes\.com\/?$/, name: 'nytimes' },
   { pattern: /^https?:\/\/(www\.)?linkedin\.com\/?$/, name: 'linkedin' }
 ];
 
